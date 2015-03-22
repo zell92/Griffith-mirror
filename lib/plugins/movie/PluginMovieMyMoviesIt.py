@@ -166,22 +166,26 @@ class SearchPlugin(movie.SearchMovie):
         self.page = gutils.trim(self.page, "ho trovato i seguenti risultati:", "Altri risultati tra i film con la parola")
 
     def get_searches(self):
-        elements = string.split(self.page,"<h3 style=\"margin:0px;\">")
+        elements = string.split(self.page,"<h3 style=\"margin:0px;\">")    
+	   	
         self.number_results = len(elements) - 1
 
         if self.number_results > 0:
             i = 1
             while i < len(elements):
                 element = gutils.trim(elements[i],"<a","</a>")
+		        y=gutils.trim(elements[i],"anno=","\">")
+
 #                print "******* elemento "+str(i)+" **********\n\n\n\n\n"+element+"\n******fine*******\n\n\n\n\n\n"
 #                print "id = "+gutils.trim(element,"recensione.asp?id=","\"")
 #                print "title = "+gutils.convert_entities(gutils.strip_tags(gutils.trim(element,'" title="', '"')))
 
                 self.ids.append(gutils.trim(element,"recensione.asp?id=","\""))
-                self.titles.append(gutils.convert_entities(gutils.strip_tags(gutils.trim(element,'" title="', '"'))))
+                self.titles.append(gutils.convert_entities(gutils.strip_tags(gutils.trim(element,'" title="', '"'))) + "\nAnno: " +y)
                 i += 1
         else:
             self.number_results = 0
+
 
 
 #

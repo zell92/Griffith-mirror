@@ -46,7 +46,7 @@ class Plugin(movie.Movie):
         self.castpage = self.open_page(self.parent_window, url='http://www.mymovies.it/cast/?id=' + self.movie_id)
 
     def get_image(self):
-        tmp_image = string.find(self.page, '<img style="float:left; border:solid 1px gray; padding:3px; margin:5px;" src="')
+        tmp_image = string.find(self.page, 'style="float:left; border:solid 1px gray; padding:3px; margin:5px;" src="')
         if tmp_image == -1:
             self.image_url = ''
         else:

@@ -31,8 +31,8 @@ plugin_name = "MyMoviesIt"
 plugin_description = "mymovies.it"
 plugin_url = "www.mymovies.it"
 plugin_language = _("Italian")
-plugin_author = "Giovanni Sposito, Filippo Valsorda"
-plugin_author_email = "<giovanni.sposito@gmail.com>, <filosottile.wiki@gmail.com>"
+plugin_author = "Giovanni Sposito, Filippo Valsorda, Nicola Sardella"
+plugin_author_email = "<giovanni.sposito@gmail.com>, <filosottile.wiki@gmail.com>, <nic.sardella@gmail.com>"
 plugin_version = "0.3"
 
 class Plugin(movie.Movie):
@@ -46,7 +46,7 @@ class Plugin(movie.Movie):
         self.castpage = self.open_page(self.parent_window, url='http://www.mymovies.it/cast/?id=' + self.movie_id)
 
     def get_image(self):
-        tmp_image = string.find(self.page, '<img style="float:left; border:solid 1px gray; padding:3px; margin:5px;" src="')
+        tmp_image = string.find(self.page, '<img onerror="this.onerror=null;this.src=\'http://pad.mymovies.it/img/nondisponibile2.jpg\';" style="float:left; border:solid 1px gray; padding:3px; margin:5px;" src="')
         if tmp_image == -1:
             self.image_url = ''
         else:

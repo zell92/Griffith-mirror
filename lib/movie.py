@@ -153,7 +153,7 @@ class Movie(object):
     def get_movie(self, parent_window=None):
         try:
             # check for internet connection
-            urllib2.urlopen("http://www.griffith.cc")
+            urllib2.urlopen("http://www.google.com")
             #
             # initialize the progress dialog once for the following loading process
             #
